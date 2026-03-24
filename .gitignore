@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+*.h5
+*.keras
+*.vcd
+mac_test
+weights_layer*_w0.npy
+weights_layer*_w1.npy
+X_test.npy
+y_test.npy
+.vscode/
+DroneAudioDataset-master/
