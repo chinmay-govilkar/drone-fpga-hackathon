@@ -1,0 +1,51 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000296fea35aa0 .scope module, "relu_tb" "relu_tb" 2 1;
+ .timescale 0 0;
+v00000296fe9eb7b0_0 .var/s "data_in", 23 0;
+v00000296fe9eb850_0 .net/s "data_out", 23 0, L_00000296fe9eb990;  1 drivers
+S_00000296fea35c30 .scope module, "uut" "relu" 2 5, 3 4 0, S_00000296fea35aa0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 24 "data_in";
+    .port_info 1 /OUTPUT 24 "data_out";
+v00000296fe9e6e00_0 .net *"_ivl_1", 0 0, L_00000296fe9eb8f0;  1 drivers
+L_00000296fea7d858 .functor BUFT 1, C4<000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v00000296fe9ea8b0_0 .net/2s *"_ivl_2", 23 0, L_00000296fea7d858;  1 drivers
+v00000296fea35dc0_0 .net/s "data_in", 23 0, v00000296fe9eb7b0_0;  1 drivers
+v00000296fea35e60_0 .net/s "data_out", 23 0, L_00000296fe9eb990;  alias, 1 drivers
+L_00000296fe9eb8f0 .part v00000296fe9eb7b0_0, 23, 1;
+L_00000296fe9eb990 .functor MUXZ 24, v00000296fe9eb7b0_0, L_00000296fea7d858, L_00000296fe9eb8f0, C4<>;
+    .scope S_00000296fea35aa0;
+T_0 ;
+    %pushi/vec4 15, 0, 24;
+    %store/vec4 v00000296fe9eb7b0_0, 0, 24;
+    %delay 10, 0;
+    %vpi_call 2 10 "$display", "Test 1 \342\200\224 relu(15)  = %0d (expect 15)", v00000296fe9eb850_0 {0 0 0};
+    %pushi/vec4 16777210, 0, 24;
+    %store/vec4 v00000296fe9eb7b0_0, 0, 24;
+    %delay 10, 0;
+    %vpi_call 2 14 "$display", "Test 2 \342\200\224 relu(-6)  = %0d (expect 0)", v00000296fe9eb850_0 {0 0 0};
+    %pushi/vec4 0, 0, 24;
+    %store/vec4 v00000296fe9eb7b0_0, 0, 24;
+    %delay 10, 0;
+    %vpi_call 2 18 "$display", "Test 3 \342\200\224 relu(0)   = %0d (expect 0)", v00000296fe9eb850_0 {0 0 0};
+    %pushi/vec4 1000, 0, 24;
+    %store/vec4 v00000296fe9eb7b0_0, 0, 24;
+    %delay 10, 0;
+    %vpi_call 2 22 "$display", "Test 4 \342\200\224 relu(1000)= %0d (expect 1000)", v00000296fe9eb850_0 {0 0 0};
+    %vpi_call 2 24 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "relu_tb.v";
+    "relu.v";
